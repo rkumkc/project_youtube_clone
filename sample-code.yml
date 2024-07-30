@@ -1,0 +1,30 @@
+trigger
+- main:
+pool: 
+  vmImage: ubuntu-latest
+stages: 
+  - stage: Build_Stage
+    jobs: 
+    - job: terraform_plan_job 
+      steps:
+      - script: echo "Terraform installing"
+      - script: echo "Terraform initialsing "
+      - script: echo "Terraform plan"
+    - job: packaging_job
+      steps:
+      - script: echo "archeving"
+      - script: echo "publishing"
+  - stage: Deploy_stage
+    jobs:
+    - job: unpacking_job
+      steps:
+      - script: echo "coping files"
+      - script: echo "un packing files" 
+    - job: terraform_apply_job
+      steps:
+      - script: echo "terraform apply"   
+               
+
+
+
+      
